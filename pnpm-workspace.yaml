@@ -1,0 +1,9 @@
+ignoredBuiltDependencies:
+  - '@reown/appkit'
+  - '@tailwindcss/oxide'
+  - bigint-buffer
+  - bufferutil
+  - secp256k1
+  - sharp
+  - unrs-resolver
+  - utf-8-validate
