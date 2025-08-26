@@ -8,7 +8,9 @@ const nextConfig: NextConfig = {
         },
         resolveExtensions: [".ts", ".tsx", ".js", ".jsx", ".mjs", ".json"],
         root: process.cwd()
-    }
+    },
+    output: "standalone",
+    productionBrowserSourceMaps: false,
 };
 
 export default nextConfig;
