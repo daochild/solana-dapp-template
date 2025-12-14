@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
     // ---- Build/runtime hygiene
-    output: "standalone",                 // keep: ideal for Docker
+    // output: "standalone",                 // Disabled temporarily due to Windows symlink permissions
     reactStrictMode: true,                // dev-only checks; zero runtime cost in prod
     compress: true,                       // gzip/deflate at framework level
     poweredByHeader: false,               // remove x-powered-by
@@ -11,7 +11,6 @@ const nextConfig: NextConfig = {
     productionBrowserSourceMaps: false,   // keep: smaller build, faster deploys
 
     // ---- Lint/TS during CI only (you can flip to true in CI)
-    eslint: { ignoreDuringBuilds: true },
     typescript: { ignoreBuildErrors: true },
 
     // ---- Images: modern formats + saner defaults
@@ -66,7 +65,7 @@ const nextConfig: NextConfig = {
     // (If you build with Webpack, these are simply ignored.)
     // --------------------------------------------------------------------------
     // Your existing block preserved & extended with safe knobs:
-    // --------------------------------------------------------------------------
+    // ---- Turbopack configuration
     turbopack: {
         resolveAlias: {
             "@components": "./src/components",
@@ -88,13 +87,15 @@ const nextConfig: NextConfig = {
         serverMinification: true,
         turbopackMinify: true,
         turbopackRemoveUnusedExports: true,
+        turbopackFileSystemCacheForDev: true,
         typedEnv: true,
-        optimizeRouterScrolling: true,
         optimizePackageImports: ["lodash", "date-fns", "@mui/material", "@mui/icons-material", "react-icons"],
     },
 
     // ---- Keep bundle/prerender output tidy
     // distDir: "dist", // optional: move .next if your infra expects custom dir
+
+    cacheComponents: true, // default in Next 14+, can be omitted
 };
 
 export default nextConfig;
