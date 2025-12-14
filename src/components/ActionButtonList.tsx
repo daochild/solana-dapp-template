@@ -11,7 +11,10 @@ export const ActionButtonList = () => {
       try {
         await disconnect();
       } catch (error) {
-        console.error("Failed to disconnect:", error);
+        if (process.env.NODE_ENV === 'development') {
+          console.error("Failed to disconnect:", error);
+        }
+        // In production, consider using a proper error tracking service
       }
     }
   return (

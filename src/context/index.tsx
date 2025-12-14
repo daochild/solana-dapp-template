@@ -8,7 +8,7 @@ import React, { type ReactNode } from 'react'
 const metadata = {
   name: 'next-reown-appkit',
   description: 'next-reown-appkit',
-  url: 'https://localhost:3000', // origin must match your domain & subdomain
+  url: process.env.NEXT_PUBLIC_APP_URL || 'https://localhost:3000', // origin must match your domain & subdomain
   icons: ['https://avatars.githubusercontent.com/u/179229932']
 }
 

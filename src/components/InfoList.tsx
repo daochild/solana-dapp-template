@@ -19,7 +19,10 @@ export const InfoList = () => {
     const mounted = useClientMounted();
 
     useEffect(() => {
-        console.log("Events: ", events);
+        // Events tracking - enable in development only
+        if (process.env.NODE_ENV === 'development') {
+            console.log("Events: ", events);
+        }
     }, [events]);
 
 
